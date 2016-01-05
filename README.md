@@ -1,2 +1,2 @@
-# Popular-Movies-Android
+# Popular Movies Android
 Popular Movies app.
