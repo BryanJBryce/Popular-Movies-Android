@@ -5,19 +5,12 @@ package com.bryanbryce.popularmovies;
  */
 public class Movie {
 
-    private String mID;
+    private String id;
+    private String title;
+    private String imageURLString;
 
-    private String mTitle;
-
-    public Movie(String title) {
-        mTitle = title;
-    }
-
-    public String getTitle() {
-        return mTitle;
-    }
-
-    public void setTitle(String title) {
-        mTitle = title;
+    @Override
+    public String toString() {
+        return title;
     }
 }

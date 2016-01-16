@@ -6,7 +6,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
+import java.util.List;
+
+import retrofit2.GsonConverterFactory;
+import retrofit2.Retrofit;
+
 public class MainActivity extends AppCompatActivity {
+
+    MovieDBAPI movieAPI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +31,16 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.fragment_container_top, fragment)
                     .commit();
         }
+//        http://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=[YOUR API KEY]
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://api.themoviedb.org/3/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
+        movieAPI = retrofit.create(MovieDBAPI.class);
+
+
+        List movies = movieAPI.listMovies();
     }
 
 }
